@@ -5,6 +5,8 @@ A library for querying javascript objects
 # Example usage
 
 ```js
+import {JSONQuery} from "@krishnadaspc/JSONQuery"
+
 var data = {
     people: [
         { name: 'Matt', country: 'NZ', age: 34 },
