@@ -1,8 +1,14 @@
 {
   "name": "@krishnadaspc/jsonquery",
-  "version": "1.0.7",
+  "version": "1.0.13",
   "description": "Library for Querying Javascript object in ORM manner.",
-  "main": "JSONQuery.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "prepublish": "tsc",
+  "scripts": {
+    "build": "tsc",
+    "prepublish": "npm test"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/pckrishnadas88/JSONQuery"

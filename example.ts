@@ -1,4 +1,4 @@
-import {JSONQuery} from "./JSONQuery"
+import {JSONQuery} from "./index"
 var data = {
     people: [
         { name: 'Matt', country: 'NZ', age: 34 },
