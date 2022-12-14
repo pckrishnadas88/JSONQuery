@@ -96,11 +96,6 @@ var data = {
     ]
 }
 
-interface People {
-    name: string;
-    country: string;
-    age: number;
-}
 const qObj = new JSONQuery(data.people)
 console.log(
     qObj
