@@ -1,6 +1,6 @@
 {
   "name": "@krishnadaspc/jsonquery",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Library for Querying Javascript object in ORM manner.",
   "main": "JSONQuery.js",
   "repository": {
@@ -14,6 +14,10 @@
     "object"
   ],
   "author": "Krishnadas P.C <pckrishnadas88@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pckrishnadas88/JSONQuery"
+  },
   "devDependencies": {
     "ts-node": "^10.9.1",
     "typescript": "^4.9.4"
