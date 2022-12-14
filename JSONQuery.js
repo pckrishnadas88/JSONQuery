@@ -1,15 +1,6 @@
 "use strict";
 exports.__esModule = true;
 exports.JSONQuery = void 0;
-var ConditionsEnum;
-(function (ConditionsEnum) {
-    ConditionsEnum["EqualTo"] = "==";
-    ConditionsEnum["LessThan"] = "<";
-    ConditionsEnum["GreaterThan"] = ">";
-    ConditionsEnum["lessThanOrEqual"] = "<=";
-    ConditionsEnum["GreaterThanOrEqual"] = ">=";
-    ConditionsEnum["NotEqual"] = "!=";
-})(ConditionsEnum || (ConditionsEnum = {}));
 var JSONQuery = /** @class */ (function () {
     function JSONQuery(data) {
         this.result = [];
@@ -43,45 +34,61 @@ var JSONQuery = /** @class */ (function () {
     };
     JSONQuery.prototype.where = function (column, condition, value) {
         this.result = this.result.filter(function (e) {
-            if (condition == ConditionsEnum.EqualTo) {
+            if (condition == "==") {
                 return e[column] == value;
             }
-            else if (condition == ConditionsEnum.GreaterThan) {
+            else if (condition == ">") {
                 return e[column] > value;
             }
-            else if (condition == ConditionsEnum.LessThan) {
+            else if (condition == "<") {
                 return e[column] < value;
             }
-            else if (condition == ConditionsEnum.NotEqual) {
+            else if (condition == "!=") {
                 return e[column] != value;
             }
-            else if (condition == ConditionsEnum.GreaterThanOrEqual) {
+            else if (condition == ">=") {
                 return e[column] >= value;
             }
-            else if (condition == ConditionsEnum.lessThanOrEqual) {
+            else if (condition == "<=") {
                 return e[column] <= value;
             }
         });
         return this;
     };
+    JSONQuery.prototype.orderBy = function (column, sort_order) {
+        if (sort_order.toLowerCase() == 'asc') {
+            this.result = this.result.sort(function (a, b) {
+                var nameA = String(a[column]).toLowerCase(); // ignore upper and lowercase
+                var nameB = String(b[column]).toLowerCase(); // ignore upper and lowercase
+                if (nameA < nameB) {
+                    return -1;
+                }
+                if (nameA > nameB) {
+                    return 1;
+                }
+                // names must be equal
+                return 0;
+            });
+        }
+        else if (sort_order.toLowerCase() == 'desc') {
+            this.result = this.result.sort(function (a, b) {
+                var nameA = String(a[column]).toLowerCase(); // ignore upper and lowercase
+                var nameB = String(b[column]).toLowerCase(); // ignore upper and lowercase
+                if (nameA < nameB) {
+                    return 1;
+                }
+                if (nameA > nameB) {
+                    return -1;
+                }
+                // names must be equal
+                return 0;
+            });
+        }
+        return this;
+    };
     return JSONQuery;
 }());
 exports.JSONQuery = JSONQuery;
-var data = {
-    people: [
-        { name: 'Matt', country: 'NZ', age: 34 },
-        { name: 'Pete', country: 'AU', age: 20 },
-        { name: 'Mikey', country: 'NZ', age: 31 },
-        { name: 'Kevin', country: 'AU', age: 40 },
-        { name: 'Joseph', country: 'AU', age: 43 },
-    ]
+module.exports = {
+    JSONQuery: JSONQuery
 };
-var qObj = new JSONQuery(data.people);
-console.log(qObj
-    .select(['name', 'age'])
-    //.select({name:})
-    .where("age", ConditionsEnum.NotEqual, 40)
-    // //.where("name", "==", "Matt")
-    // .orderBy("age", "desc")
-    .limit(2)
-    .get());
