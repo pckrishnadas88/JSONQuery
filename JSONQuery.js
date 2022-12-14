@@ -1,3 +1,15 @@
+"use strict";
+exports.__esModule = true;
+exports.JSONQuery = void 0;
+var WhereConditions;
+(function (WhereConditions) {
+    WhereConditions["EqualTo"] = "==";
+    WhereConditions["LessThan"] = "<";
+    WhereConditions["GreaterThan"] = ">";
+    WhereConditions["lessThanOrEqual"] = "<=";
+    WhereConditions["GreaterThanOrEqual"] = ">=";
+    WhereConditions["NotEqual"] = "!=";
+})(WhereConditions || (WhereConditions = {}));
 var JSONQuery = /** @class */ (function () {
     function JSONQuery(data) {
         this.result = [];
@@ -6,28 +18,55 @@ var JSONQuery = /** @class */ (function () {
     JSONQuery.prototype.get = function () {
         return this.result;
     };
-    JSONQuery.prototype.select = function () {
+    JSONQuery.prototype.select = function (columns) {
         var _this = this;
-        var columns = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            columns[_i] = arguments[_i];
-        }
         if (columns.length == 1 && columns[0] == "*") {
             this.result = this.data;
             return this;
         }
-        this.data;
         this.data.map(function (e) {
+            var singleRow = {};
             for (var _i = 0, columns_1 = columns; _i < columns_1.length; _i++) {
                 var column = columns_1[_i];
-                _this.singleRow[column] = e[column];
+                singleRow[column] = e[column];
             }
-            _this.result.push(_this.singleRow);
+            _this.result.push(singleRow);
+        });
+        return this;
+    };
+    JSONQuery.prototype.limit = function (limit) {
+        if (limit === void 0) { limit = 10; }
+        if (this.result.length >= limit) {
+            this.result = this.result.slice(0, limit);
+        }
+        return this;
+    };
+    JSONQuery.prototype.where = function (column, condition, value) {
+        this.result = this.result.filter(function (e) {
+            if (condition == WhereConditions.EqualTo) {
+                return e[column] == value;
+            }
+            else if (condition == WhereConditions.GreaterThan) {
+                return e[column] > value;
+            }
+            else if (condition == WhereConditions.LessThan) {
+                return e[column] < value;
+            }
+            else if (condition == WhereConditions.NotEqual) {
+                return e[column] != value;
+            }
+            else if (condition == WhereConditions.GreaterThanOrEqual) {
+                return e[column] >= value;
+            }
+            else if (condition == WhereConditions.lessThanOrEqual) {
+                return e[column] <= value;
+            }
         });
         return this;
     };
     return JSONQuery;
 }());
+exports.JSONQuery = JSONQuery;
 var data = {
     people: [
         { name: 'Matt', country: 'NZ', age: 34 },
@@ -39,10 +78,10 @@ var data = {
 };
 var qObj = new JSONQuery(data.people);
 console.log(qObj
-    //.select('name', 'country', 'pin', 'age')
-    .select("*")
+    .select(['name', 'age'])
+    //.select({name:})
     // .where("age", "!=", 40)
     // //.where("name", "==", "Matt")
     // .orderBy("age", "desc")
-    // .limit(4)
+    .limit(2)
     .get());
