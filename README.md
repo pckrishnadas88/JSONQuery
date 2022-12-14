@@ -19,11 +19,11 @@ var data = {
 const qObj = new JSONQuery(data.people)
 
 qObj
-.select('name', 'country', 'pin', 'age')
-.where("age", "!=", 40)
-.orderBy("age", "desc")
-.limit(4)
-.get()
+  .select(['name', 'age'])
+  .where("age", "!=", 40)
+  .orderBy("age", "asc")
+  .limit(4)
+  .get()
 
 ```
 will output 
