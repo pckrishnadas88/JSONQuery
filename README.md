@@ -26,7 +26,7 @@ qObj
 .get()
 
 ```
-will output
+will output 
 
 ```sh
 [
