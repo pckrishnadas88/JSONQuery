@@ -2,6 +2,12 @@
 
 A library for querying javascript objects
 
+# Installation
+
+```bash
+npm i @krishnadaspc/jsonquery
+```
+
 # Example usage
 
 ```js
@@ -44,7 +50,7 @@ will output
 import { JSONQuery } from "@krishnadaspc/JSONQuery"
 import axios from "axios"
 
-interface IPeople {
+interface IProduct {
     id: Number,
     title: string,
     price: Number,
@@ -53,7 +59,7 @@ interface IPeople {
 
 axios.get('https://dummyjson.com/products')
     .then(response => {
-        const qObj = new JSONQuery<IPeople>(response.data.products)
+        const qObj = new JSONQuery<IProduct>(response.data.products)
         const filteredProducts = qObj
             .select(['id', "title", 'price', "rating"])
             .where("price", ">", 100)
