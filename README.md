@@ -30,9 +30,9 @@ will output
 
 ```sh
 [
-  { name: 'Joseph', country: 'AU', pin: null, age: 43 },
-  { name: 'Matt', country: 'NZ', pin: 49493, age: 34 },
-  { name: 'Mikey', country: 'NZ', pin: null, age: 31 },
-  { name: 'Pete', country: 'AU', pin: null, age: 20 }
+  { name: 'Pete', age: 20 },
+  { name: 'Mikey', age: 31 },
+  { name: 'Matt', age: 34 },
+  { name: 'Joseph', age: 43 }
 ]
 ```

@@ -100,7 +100,7 @@ const qObj = new JSONQuery(data.people)
 console.log(
     qObj
         .select(['name', 'age'])
-        .where("age", "==", 40)
+        .where("age", "!=", 40)
         // //.where("name", "==", "Matt")
         .orderBy("age", "asc")
         .limit(4)
