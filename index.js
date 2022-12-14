@@ -56,6 +56,40 @@ class JSONQuery {
          } )
         return this
     }
+    orderBy(column, sort_order) {
+            if(sort_order.toLowerCase() == 'asc') {
+                this.result = this.result.sort((a, b) => {
+                    const nameA = a[column].toString().toLowerCase(); // ignore upper and lowercase
+                    const nameB = b[column].toString().toLowerCase(); // ignore upper and lowercase
+                    if (nameA < nameB) {
+                    return -1;
+                    }
+                    if (nameA > nameB) {
+                    return 1;
+                    }
+                
+                    // names must be equal
+                    return 0;
+                })
+            } else if(sort_order.toLowerCase() == 'desc') {
+                this.result = this.result.sort((a, b) => {
+                    const nameA = a[column].toString().toLowerCase(); // ignore upper and lowercase
+                    const nameB = b[column].toString().toLowerCase(); // ignore upper and lowercase
+                    if (nameA < nameB) {
+                        return 1;
+                    }
+                    if (nameA > nameB) {
+                        return -1;
+                    }
+                
+                    // names must be equal
+                    return 0;
+                })
+            }
+        return this
+        
+        
+    }
    
 }
 
@@ -65,5 +99,6 @@ console.log(
     .select('name', 'country', 'pin', 'age')
     .where("age", "!=", 40)
     //.where("name", "==", "Matt")
+    .orderBy("age", "desc")
     .limit(4)
     .get())
