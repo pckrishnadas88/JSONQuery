@@ -1,4 +1,4 @@
-
+/*
 var data = {
     people: [
       {name: 'Matt', country: 'NZ', pin:49493, age:34},
@@ -107,3 +107,4 @@ console.log(
     .orderBy("age", "desc")
     .limit(4)
     .get())
+    */
