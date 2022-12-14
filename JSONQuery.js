@@ -1,15 +1,15 @@
 "use strict";
 exports.__esModule = true;
 exports.JSONQuery = void 0;
-var WhereConditions;
-(function (WhereConditions) {
-    WhereConditions["EqualTo"] = "==";
-    WhereConditions["LessThan"] = "<";
-    WhereConditions["GreaterThan"] = ">";
-    WhereConditions["lessThanOrEqual"] = "<=";
-    WhereConditions["GreaterThanOrEqual"] = ">=";
-    WhereConditions["NotEqual"] = "!=";
-})(WhereConditions || (WhereConditions = {}));
+var ConditionsEnum;
+(function (ConditionsEnum) {
+    ConditionsEnum["EqualTo"] = "==";
+    ConditionsEnum["LessThan"] = "<";
+    ConditionsEnum["GreaterThan"] = ">";
+    ConditionsEnum["lessThanOrEqual"] = "<=";
+    ConditionsEnum["GreaterThanOrEqual"] = ">=";
+    ConditionsEnum["NotEqual"] = "!=";
+})(ConditionsEnum || (ConditionsEnum = {}));
 var JSONQuery = /** @class */ (function () {
     function JSONQuery(data) {
         this.result = [];
@@ -43,22 +43,22 @@ var JSONQuery = /** @class */ (function () {
     };
     JSONQuery.prototype.where = function (column, condition, value) {
         this.result = this.result.filter(function (e) {
-            if (condition == WhereConditions.EqualTo) {
+            if (condition == ConditionsEnum.EqualTo) {
                 return e[column] == value;
             }
-            else if (condition == WhereConditions.GreaterThan) {
+            else if (condition == ConditionsEnum.GreaterThan) {
                 return e[column] > value;
             }
-            else if (condition == WhereConditions.LessThan) {
+            else if (condition == ConditionsEnum.LessThan) {
                 return e[column] < value;
             }
-            else if (condition == WhereConditions.NotEqual) {
+            else if (condition == ConditionsEnum.NotEqual) {
                 return e[column] != value;
             }
-            else if (condition == WhereConditions.GreaterThanOrEqual) {
+            else if (condition == ConditionsEnum.GreaterThanOrEqual) {
                 return e[column] >= value;
             }
-            else if (condition == WhereConditions.lessThanOrEqual) {
+            else if (condition == ConditionsEnum.lessThanOrEqual) {
                 return e[column] <= value;
             }
         });
@@ -80,7 +80,7 @@ var qObj = new JSONQuery(data.people);
 console.log(qObj
     .select(['name', 'age'])
     //.select({name:})
-    // .where("age", "!=", 40)
+    .where("age", ConditionsEnum.NotEqual, 40)
     // //.where("name", "==", "Matt")
     // .orderBy("age", "desc")
     .limit(2)

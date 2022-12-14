@@ -1,4 +1,4 @@
-enum WhereConditions {
+enum ConditionsEnum {
     EqualTo = "==",
     LessThan = "<",
     GreaterThan = ">",
@@ -16,7 +16,7 @@ export class JSONQuery<DataType> {
     get(): DataType[] {
         return this.result
     }
-    select(columns: Array<string>) {
+    select(columns: Array<keyof DataType>) {
         if(columns.length == 1 && columns[0] == "*") {
             this.result = this.data
             return this
@@ -36,19 +36,19 @@ export class JSONQuery<DataType> {
         }
         return this
     }
-    where(column: string, condition: WhereConditions, value: any) {
+    where(column:  keyof DataType, condition: ConditionsEnum, value: any) {
         this.result = this.result.filter(e=> {
-            if(condition == WhereConditions.EqualTo) {
+            if(condition == ConditionsEnum.EqualTo) {
                 return e[column as keyof DataType] == value
-            } else if(condition == WhereConditions.GreaterThan) {
+            } else if(condition == ConditionsEnum.GreaterThan) {
                 return e[column as keyof DataType] > value
-            } else if(condition == WhereConditions.LessThan) {
+            } else if(condition == ConditionsEnum.LessThan) {
                 return e[column as keyof DataType] < value
-            } else if(condition == WhereConditions.NotEqual) {
+            } else if(condition == ConditionsEnum.NotEqual) {
                 return e[column as keyof DataType] != value
-            } else if(condition == WhereConditions.GreaterThanOrEqual) {
+            } else if(condition == ConditionsEnum.GreaterThanOrEqual) {
                 return e[column as keyof DataType] >= value
-            } else if(condition == WhereConditions.lessThanOrEqual) {
+            } else if(condition == ConditionsEnum.lessThanOrEqual) {
                 return e[column as keyof DataType] <= value
             }
 
@@ -78,7 +78,7 @@ console.log(
     qObj
     .select(['name', 'age'])
     //.select({name:})
-    // .where("age", "!=", 40)
+    .where("age", ConditionsEnum.NotEqual, 40)
     // //.where("name", "==", "Matt")
     // .orderBy("age", "desc")
     .limit(2)
