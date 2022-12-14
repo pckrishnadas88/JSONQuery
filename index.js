@@ -19,6 +19,10 @@ class JSONQuery {
         return this.result
     }
     select(...columns) {
+        if(columns == "*") {
+            this.result = this.data
+            return this
+        }
         this.data.map(e=> {
             const singleItem = {}
             for (const column of columns) {
@@ -96,7 +100,8 @@ class JSONQuery {
 const qObj = new JSONQuery(data.people)
 console.log(
     qObj
-    .select('name', 'country', 'pin', 'age')
+    //.select('name', 'country', 'pin', 'age')
+    .select("*")
     .where("age", "!=", 40)
     //.where("name", "==", "Matt")
     .orderBy("age", "desc")
