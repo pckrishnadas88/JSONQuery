@@ -14,7 +14,7 @@ npm i @krishnadaspc/jsonquery
 # Examples of available functions
 
 <details>
-  <summary>1. select</summary>
+  <summary>select</summary>
 
 ```js
 import {JSONQuery} from "@krishnadaspc/JSONQuery"
@@ -32,14 +32,15 @@ var data = {
 
 const qObj = new JSONQuery(data.people)
 ```
-1. Selecting selected columns
+
+## 1. Selecting selected columns
 
 ```js
 qObj
   .select(['name', 'age'])
   .get()
 ```
-2. Selecting all columns
+## 2. Selecting all columns
 ```js
 qObj
   .select(['*'])
