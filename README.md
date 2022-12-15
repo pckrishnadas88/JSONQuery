@@ -21,8 +21,8 @@ Currently available methods
 1. get()
 2. select(columns: Array<keyof DataType> | ['*'])
 3. limit(Number)
-4. where(column: keyof DataType, condition: ComparisonOperator, value: any)
-5. orderBy(column: keyof DataType, sort_order:SortOrder)
+4. where(column: keyof DataType, condition: "==" | "<" | ">" | "<=" | ">=" | "!=", value: any)
+5. orderBy(column: keyof DataType, sortOrder: "asc" | "desc")
 6. distinct(column: keyof DataType)
 7. fetchOnly(column: keyof DataType) // This is not chainable as it returns a single column values as plain array
 8. in(column: keyof DataType, values:Array<any>)

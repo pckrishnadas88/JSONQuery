@@ -49,8 +49,8 @@ export class JSONQuery<DataType> {
         })
         return this
     }
-    orderBy(column: keyof DataType, sort_order:SortOrder) {
-        if (sort_order.toLowerCase() == 'asc') {
+    orderBy(column: keyof DataType, sortOrder:SortOrder) {
+        if (sortOrder.toLowerCase() == 'asc') {
             this.result = this.result.sort((a, b) => {
                 const nameA = String(a[column as keyof DataType]).toLowerCase() // ignore upper and lowercase
                 const nameB = String(b[column as keyof DataType]).toLowerCase() // ignore upper and lowercase
@@ -62,7 +62,7 @@ export class JSONQuery<DataType> {
                 }
                 return 0;
             })
-        } else if (sort_order.toLowerCase() == 'desc') {
+        } else if (sortOrder.toLowerCase() == 'desc') {
             this.result = this.result.sort((a, b) => {
                 const nameA = String(a[column as keyof DataType]).toLowerCase() // ignore upper and lowercase
                 const nameB = String(b[column as keyof DataType]).toLowerCase() // ignore upper and lowercase
