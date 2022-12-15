@@ -81,6 +81,14 @@ export class JSONQuery<DataType> {
 
 
     }
+    // TODO: currently support only one column add multiple column distinct option.
+    distinct(column: keyof DataType) {
+        this.result = [...new Map(this.data.map((m) => [m[column as keyof DataType], m])).values()]
+        return this
+    }
+    fetchOnly(column: keyof DataType) {
+        return this.result.map(e=> e[column as keyof DataType])
+    }
 }
 
 module.exports = {
