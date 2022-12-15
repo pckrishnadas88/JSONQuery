@@ -2,7 +2,7 @@
 
 A library for querying javascript objects
 
-![npm](https://img.shields.io/npm/dw/@krishnadaspc/jsonquery) ![Version](https://img.shields.io/npm/v/@krishnadaspc/jsonquery)
+![npm](https://img.shields.io/npm/dw/@krishnadaspc/jsonquery) ![Version](https://img.shields.io/npm/v/@krishnadaspc/jsonquery) [![TypeScript](https://badges.frapsoft.com/typescript/love/typescript.svg?v=101)](https://github.com/ellerbrock/typescript-badges/)
 
 
 # Installation
