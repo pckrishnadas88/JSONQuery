@@ -11,7 +11,10 @@ A library for querying javascript objects
 npm i @krishnadaspc/jsonquery
 ```
 
-# Example usage
+# Examples of available functions
+
+<details>
+  <summary>1. select</summary>
 
 ```js
 import {JSONQuery} from "@krishnadaspc/JSONQuery"
@@ -28,25 +31,23 @@ var data = {
 }
 
 const qObj = new JSONQuery(data.people)
+```
+1. Selecting selected columns
 
+```js
 qObj
   .select(['name', 'age'])
-  .where("age", "!=", 40)
-  .orderBy("age", "asc")
-  .limit(4)
   .get()
-
 ```
-will output 
-
-```bash
-[
-  { name: 'Pete', age: 20 },
-  { name: 'Mikey', age: 31 },
-  { name: 'Matt', age: 34 },
-  { name: 'Joseph', age: 43 }
-]
+2. Selecting all columns
+```js
+qObj
+  .select(['*'])
+  .get()
 ```
+</details>
+
+
 # Typescript Example fetching from live dummyjson api using axios
 
 ```js

@@ -7,3 +7,4 @@ dist/example.js
 dist/example.d.ts
 dist/jest.config.d.ts 
 dist/jest.config.js
+docs
