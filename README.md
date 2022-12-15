@@ -48,6 +48,73 @@ qObj
 ```
 </details>
 
+<details>
+  <summary>where(column, condition, value)</summary>
+  ## 1. using single where condition 
+
+```js
+import {JSONQuery} from "./index"
+const data = {
+    people: [
+        { name: 'Matt', country: 'NZ', age: 34 },
+        { name: 'Pete', country: 'AU', age: 20 },
+        { name: 'Mikey', country: 'NZ', age: 31 },
+        { name: 'Kevin', country: 'AU', age: 40 },
+        { name: 'Joseph', country: 'AU', age: 43 },
+
+    ]
+}
+
+const qObj = new JSONQuery(data.people)
+console.log(
+    qObj
+    .select(['name', 'age'])
+    .where("age", ">", 30)
+    .get()
+)
+
+/**output
+[
+  { name: 'Matt', age: 34 },
+  { name: 'Mikey', age: 31 },
+  { name: 'Kevin', age: 40 },
+  { name: 'Joseph', age: 43 }
+]
+*/
+
+```
+## 2. using multiple where condition 
+
+```js
+const data = {
+    people: [
+        { name: 'Matt', country: 'NZ', age: 34 },
+        { name: 'Pete', country: 'AU', age: 20 },
+        { name: 'Mikey', country: 'NZ', age: 31 },
+        { name: 'Kevin', country: 'AU', age: 40 },
+        { name: 'Joseph', country: 'AU', age: 43 },
+
+    ]
+}
+
+const qObj = new JSONQuery(data.people)
+console.log(
+    qObj
+    .select(['name', 'age', "country"])
+    .where("age", ">", 30)
+    .where("country", "==", "AU")
+    .get()
+)
+/**output
+[
+  { name: 'Kevin', age: 40, country: 'AU' },
+  { name: 'Joseph', age: 43, country: 'AU' }
+]
+*/
+
+```
+
+</details>
 
 # Typescript Example fetching from live dummyjson api using axios
 

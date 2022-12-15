@@ -1,5 +1,5 @@
 import {JSONQuery} from "./index"
-var data = {
+const data = {
     people: [
         { name: 'Matt', country: 'NZ', age: 34 },
         { name: 'Pete', country: 'AU', age: 20 },
@@ -13,9 +13,9 @@ var data = {
 const qObj = new JSONQuery(data.people)
 console.log(
     qObj
-        .select(['name', 'age', 'country'])
-        .in("country", ['AU'])
-        .get()
+    .select(['name', 'age'])
+    .where("age", ">", 30)
+    .get()
 )
 
 
