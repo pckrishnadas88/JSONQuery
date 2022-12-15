@@ -10,7 +10,7 @@ export class JSONQuery<DataType> {
     get(): DataType[] {
         return this.result
     }
-    select(columns: Array<keyof DataType>) {
+    select(columns: Array<keyof DataType> | ['*']) {
         if (columns.length == 1 && columns[0] == "*") {
             this.result = this.data
             return this
@@ -60,8 +60,6 @@ export class JSONQuery<DataType> {
                 if (nameA > nameB) {
                     return 1
                 }
-
-                // names must be equal
                 return 0;
             })
         } else if (sort_order.toLowerCase() == 'desc') {
