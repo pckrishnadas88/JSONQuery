@@ -2,7 +2,7 @@
 
 A library for querying javascript objects
 
-![npm](https://img.shields.io/npm/dw/@krishnadaspc/jsonquery) https://img.shields.io/npm/v/@krishnadaspc/jsonquery
+![npm](https://img.shields.io/npm/dw/@krishnadaspc/jsonquery) <img src="https://img.shields.io/npm/v/@krishnadaspc/jsonquery" alt="version"/>
 
 
 # Installation
