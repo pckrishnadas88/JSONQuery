@@ -2,6 +2,9 @@
 
 A library for querying javascript objects
 
+![npm](https://img.shields.io/npm/dw/@krishnadaspc/jsonquery) https://img.shields.io/npm/v/@krishnadaspc/jsonquery
+
+
 # Installation
 
 ```bash
