@@ -11,22 +11,11 @@ var data = {
 }
 
 const qObj = new JSONQuery(data.people)
-// console.log(
-//     qObj
-//         //.select(['name', 'age'])
-//         .distinct("country")
-//         .fetchOnly("country")
-// )
+console.log(
+    qObj
+        .select(['name', 'age', 'country'])
+        .in("country", ['AU'])
+        .get()
+)
 
 
-var ageArray = 
-    [
-        {"name":"Joe", "age":17}, 
-        {"name":"Bob", "age":17}, 
-        {"name":"Carl", "age": 35}
-    ]
-
-const ageArrayObj = new JSONQuery(ageArray)
-
-console.log(ageArrayObj.distinct("age").get()) // outputs: [ { name: 'Bob', age: 17 }, { name: 'Carl', age: 35 } ]
-console.log(ageArrayObj.distinct("age").fetchOnly("age")) // outputs: [ 17, 35 ]

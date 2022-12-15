@@ -89,6 +89,10 @@ export class JSONQuery<DataType> {
     fetchOnly(column: keyof DataType) {
         return this.result.map(e=> e[column as keyof DataType])
     }
+    in(column: keyof DataType, values:Array<any>) {
+        this.result = this.result.filter(e =>  values.includes(e[column]) )
+        return this
+    }
 }
 
 module.exports = {
