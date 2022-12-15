@@ -11,6 +11,48 @@ A library for querying javascript objects
 npm i @krishnadaspc/jsonquery
 ```
 
+## overview of all available functions - check Examples of available functions section for examples
+
+most methods can be chained and to get the final result call the ``get()`` method at the end.
+
+Currently available methods
+
+```ts
+1. get()
+2. select(columns: Array<keyof DataType> | ['*'])
+3. limit(Number)
+4. where(column: keyof DataType, condition: ComparisonOperator, value: any)
+5. orderBy(column: keyof DataType, sort_order:SortOrder)
+6. distinct(column: keyof DataType)
+7. fetchOnly(column: keyof DataType) // This is not chainable as it returns a single column values as plain array
+8. in(column: keyof DataType, values:Array<any>)
+```
+
+```js
+import {JSONQuery} from "@krishnadaspc/JSONQuery"
+
+var data = {
+    people: [
+        { name: 'Matt', country: 'NZ', age: 34 },
+        { name: 'Pete', country: 'AU', age: 20 },
+        { name: 'Mikey', country: 'NZ', age: 31 },
+        { name: 'Kevin', country: 'AU', age: 40 },
+        { name: 'Joseph', country: 'AU', age: 43 },
+
+    ]
+}
+
+const qObj = new JSONQuery(data.people)
+
+ qObj
+    .select(['name', 'age', "country"])
+    .where("age", ">", 30)
+    .orderBy("age", "asc")
+    .limit(5)
+    .get()
+
+```
+
 # Examples of available functions
 
 <details>
@@ -50,7 +92,8 @@ qObj
 
 <details>
   <summary>where(column, condition, value)</summary>
-  ## 1. using single where condition 
+
+## 1. using single where condition 
 
 ```js
 import {JSONQuery} from "./index"
