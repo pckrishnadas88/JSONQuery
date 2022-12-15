@@ -2,3 +2,8 @@ coverage
 tests
 jest.config.ts 
 babel.config.js
+dist/tests
+dist/example.js 
+dist/example.d.ts
+dist/jest.config.d.ts 
+dist/jest.config.js
