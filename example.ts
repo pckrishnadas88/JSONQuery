@@ -13,8 +13,10 @@ const data = {
 const qObj = new JSONQuery(data.people)
 console.log(
     qObj
-    .select(['name', 'age'])
-    .where("age", ">", 30)
+    .select(['name', 'age', 'country'])
+    .notIn("age", [30, 43])
+    .notIn("country", ["NZ"])
+    .orderBy("age", "asc")
     .get()
 )
 

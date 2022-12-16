@@ -93,6 +93,10 @@ export class JSONQuery<DataType> {
         this.result = this.result.filter(e =>  values.includes(e[column]) )
         return this
     }
+    notIn(column: keyof DataType, values:Array<any>) {
+        this.result = this.result.filter(e =>  !values.includes(e[column]) )
+        return this
+    }
 }
 
 module.exports = {
