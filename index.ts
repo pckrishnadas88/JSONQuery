@@ -1,10 +1,14 @@
 type SortOrder = "asc" | "desc"
 type ComparisonOperator = "==" | "<" | ">" | "<=" | ">=" | "!="
+// type Keys = keyof DataType
+// type Values = DataType[Keys]
 export class JSONQuery<DataType> {
     data: DataType[]
     result: DataType[] = []
+    
     constructor(data: DataType[]) {
         this.data = data
+       
     }
 
     get(): DataType[] {
@@ -95,6 +99,10 @@ export class JSONQuery<DataType> {
     }
     notIn(column: keyof DataType, values:Array<any>) {
         this.result = this.result.filter(e =>  !values.includes(e[column]) )
+        return this
+    }
+    between(column: keyof DataType, startValue: any, endValue: any) {
+        this.result = this.result.filter(e => startValue < e[column] && endValue > e[column])
         return this
     }
 }

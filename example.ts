@@ -14,8 +14,7 @@ const qObj = new JSONQuery(data.people)
 console.log(
     qObj
     .select(['name', 'age', 'country'])
-    .notIn("age", [30, 43])
-    .notIn("country", ["NZ"])
+    .between("age", 25, 40)
     .orderBy("age", "asc")
     .get()
 )

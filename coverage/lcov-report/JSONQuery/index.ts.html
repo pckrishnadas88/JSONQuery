@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">94.79% </span>
+                <span class="strong">87.5% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>91/96</span>
+                <span class='fraction'>98/112</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">77.77% </span>
+                <span class="strong">58.33% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>7/9</span>
+                <span class='fraction'>7/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">94.79% </span>
+                <span class="strong">87.5% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>91/96</span>
+                <span class='fraction'>98/112</span>
             </div>
         
             
@@ -158,12 +158,32 @@
 <a name='L93'></a><a href='#L93'>93</a>
 <a name='L94'></a><a href='#L94'>94</a>
 <a name='L95'></a><a href='#L95'>95</a>
-<a name='L96'></a><a href='#L96'>96</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -250,16 +270,32 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">type SortOrder = "asc" | "desc"
 type ComparisonOperator = "==" | "&lt;" | "&gt;" | "&lt;=" | "&gt;=" | "!="
+// type Keys = keyof DataType
+// type Values = DataType[Keys]
 export class JSONQuery&lt;DataType&gt; {
     data: DataType[]
     result: DataType[] = []
+    
     constructor(data: DataType[]) {
         this.data = data
+       
     }
 &nbsp;
     get(): DataType[] {
@@ -304,8 +340,8 @@ export class JSONQuery&lt;DataType&gt; {
         })
         return this
     }
-    orderBy(column: keyof DataType, sort_order:SortOrder) {
-        if (sort_order.toLowerCase() == 'asc') {
+    orderBy(column: keyof DataType, sortOrder:SortOrder) {
+        if (sortOrder.toLowerCase() == 'asc') {
             this.result = this.result.sort((a, b) =&gt; {
                 const nameA = String(a[column as keyof DataType]).toLowerCase() // ignore upper and lowercase
                 const nameB = String(b[column as keyof DataType]).toLowerCase() // ignore upper and lowercase
@@ -317,7 +353,7 @@ export class JSONQuery&lt;DataType&gt; {
                 }
                 return 0;
             })
-        } else if (sort_order.toLowerCase() == 'desc') {
+        } else if (sortOrder.toLowerCase() == 'desc') {
             this.result = this.result.sort((a, b) =&gt; {
                 const nameA = String(a[column as keyof DataType]).toLowerCase() // ignore upper and lowercase
                 const nameB = String(b[column as keyof DataType]).toLowerCase() // ignore upper and lowercase
@@ -344,6 +380,18 @@ export class JSONQuery&lt;DataType&gt; {
 <span class="fstat-no" title="function not covered" >    fetchOnly(column: keyof DataType) {</span>
 <span class="cstat-no" title="statement not covered" >        return this.result.map(e=&gt; e[column as keyof DataType])</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
+<span class="fstat-no" title="function not covered" >    in(column: keyof DataType, values:Array&lt;any&gt;) {</span>
+<span class="cstat-no" title="statement not covered" >        this.result = this.result.filter(e =&gt;  values.includes(e[column]) )</span>
+<span class="cstat-no" title="statement not covered" >        return this</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
+<span class="fstat-no" title="function not covered" >    notIn(column: keyof DataType, values:Array&lt;any&gt;) {</span>
+<span class="cstat-no" title="statement not covered" >        this.result = this.result.filter(e =&gt;  !values.includes(e[column]) )</span>
+<span class="cstat-no" title="statement not covered" >        return this</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
+<span class="fstat-no" title="function not covered" >    between(column: keyof DataType, startValue: any, endValue: any) {</span>
+<span class="cstat-no" title="statement not covered" >        this.result = this.result.filter(e =&gt; startValue &lt; e[column] &amp;&amp; endValue &gt; e[column])</span>
+<span class="cstat-no" title="statement not covered" >        return this</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
 }
 &nbsp;
 module.exports = {
@@ -355,7 +403,7 @@ module.exports = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-12-15T10:19:02.606Z
+                at 2022-12-16T08:12:16.009Z
             </div>
         <script src="../prettify.js"></script>
         <script>

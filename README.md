@@ -18,16 +18,16 @@ most methods can be chained and to get the final result call the ``get()`` metho
 ### Currently available methods
 
 
-- get()
-- select(columns: Array<keyof DataType> | ['*'])
-- limit(Number)
-- where(column: keyof DataType, condition: "==" | "<" | ">" | "<=" | ">=" | "!=", value: any)
-- orderBy(column: keyof DataType, sortOrder: "asc" | "desc")
-- distinct(column: keyof DataType)
-- fetchOnly(column: keyof DataType) // This is not chainable as it returns a single column values as plain array
-- in(column: keyof DataType, values:Array<any>)
-- notIn(column: keyof DataType, values:Array<any>)
-
+- *get()*
+- *select(columns: Array<keyof DataType> | ['*'])*
+- *limit(Number)*
+- *where(column: keyof DataType, condition: "==" | "<" | ">" | "<=" | ">=" | "!=", value: any)*
+- *orderBy(column: keyof DataType, sortOrder: "asc" | "desc")*
+- *distinct(column: keyof DataType)*
+- *fetchOnly(column: keyof DataType)*  This is not chainable as it returns a single column values as plain array
+- *in(column: keyof DataType, values:Array<any>)*
+- *notIn(column: keyof DataType, values:Array<any>)*
+- *between(column: keyof DataType, startValue: any, endValue: any)*
 ```js
 import {JSONQuery} from "@krishnadaspc/JSONQuery"
 
