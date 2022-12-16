@@ -11,22 +11,22 @@ A library for querying javascript objects
 npm i @krishnadaspc/jsonquery
 ```
 
-## overview of all available functions - check Examples of available functions section for examples
+## overview of all available functions
 
 most methods can be chained and to get the final result call the ``get()`` method at the end.
 
-Currently available methods
+### Currently available methods
 
 
-- get()
-- select(columns: Array<keyof DataType> | ['*'])
-- limit(Number)
-- where(column: keyof DataType, condition: "==" | "<" | ">" | "<=" | ">=" | "!=", value: any)
-- orderBy(column: keyof DataType, sortOrder: "asc" | "desc")
-- distinct(column: keyof DataType)
-- fetchOnly(column: keyof DataType) // This is not chainable as it returns a single column values as plain array
-- in(column: keyof DataType, values:Array<any>)
-- notIn(column: keyof DataType, values:Array<any>)
+## - get()
+## - select(columns: Array<keyof DataType> | ['*'])
+## - limit(Number)
+## - where(column: keyof DataType, condition: "==" | "<" | ">" | "<=" | ">=" | "!=", value: any)
+## - orderBy(column: keyof DataType, sortOrder: "asc" | "desc")
+## - distinct(column: keyof DataType)
+## - fetchOnly(column: keyof DataType) // This is not chainable as it returns a single column values as plain array
+## - in(column: keyof DataType, values:Array<any>)
+## - notIn(column: keyof DataType, values:Array<any>)
 
 ```js
 import {JSONQuery} from "@krishnadaspc/JSONQuery"
