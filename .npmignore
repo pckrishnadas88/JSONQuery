@@ -8,3 +8,4 @@ dist/example.d.ts
 dist/jest.config.d.ts 
 dist/jest.config.js
 docs
+dist/example.ts
