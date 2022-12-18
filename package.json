@@ -1,6 +1,6 @@
 {
   "name": "@krishnadaspc/jsonquery",
-  "version": "1.3.4",
+  "version": "1.3.5",
   "description": "Library for Querying Javascript object in ORM manner.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
