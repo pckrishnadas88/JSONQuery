@@ -28,7 +28,7 @@ most methods can be chained and to get the final result call the ``get()`` metho
 - *in(column: keyof DataType, values:Array<any>)*
 - *notIn(column: keyof DataType, values:Array<any>)*
 - *between(column: keyof DataType, startValue: any, endValue: any)*
-- *nestedWhere(column: string, condition: ComparisonOperator, value: any)
+- *nestedWhere(column: string, condition: ComparisonOperator, value: any)*
 ```js
 import {JSONQuery} from "@krishnadaspc/JSONQuery"
 
