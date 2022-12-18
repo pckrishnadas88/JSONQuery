@@ -20,7 +20,7 @@ most methods can be chained and to get the final result call the ``get()`` metho
 
 - *get()*
 - *select(columns: Array<keyof DataType> | ['*'])*
-- *limit(Number)*
+- *limit(limit: Number=0, offset: Number=0)*
 - *where(column: keyof DataType, condition: "==" | "<" | ">" | "<=" | ">=" | "!=", value: any)*
 - *orderBy(column: keyof DataType, sortOrder: "asc" | "desc")*
 - *distinct(column: keyof DataType)*

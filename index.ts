@@ -30,9 +30,9 @@ export class JSONQuery<DataType> {
         })
         return this
     }
-    limit(limit = 10) {
+    limit(limit = 10, offset = 0) {
         if (this.result.length >= limit) {
-            this.result = this.result.slice(0, limit)
+            this.result = this.result.slice(offset, limit)
         }
         return this
     }

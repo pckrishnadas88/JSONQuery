@@ -130,11 +130,12 @@ const people = [
     }
 ]
 const qObj = new JSONQuery(people)
-console.dir(
+const result =
     qObj
     .select(['fullName', 'address', 'email', 'phone', 'jobInfo'])
-    .nestedWhere("jobInfo.department", "==", "Sports")
-    .orderBy("fullName", "desc")
+    .nestedWhere("jobInfo.department", "!=", "Sports")
+    .limit(6)
+    .orderBy('fullName', 'desc')
     .get()
-)
 
+console.log(result)
